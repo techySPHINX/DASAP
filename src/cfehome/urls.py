@@ -17,9 +17,9 @@ from django.urls import path
 from .views import (
     home_view, 
     about_view, 
-    pw_protected_view,
-    user_only_view,
-    staff_only_view
+    # pw_protected_view,
+    # user_only_view,
+    # staff_only_view
 )
 
 urlpatterns = [

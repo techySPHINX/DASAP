@@ -11,19 +11,17 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-sp(k()nx!%!(9^y&2)vu#7_qro!*&i-%_sref3tl-2kua5-ba-'
+SECRET_KEY = config("DJANGO_SECRET_KEY") 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = str(os.environ.get("DJANGO_DEBUG")).lower() == "true"
+DEBUG = config("DJANGO_DEBUG", cast=bool)
+BASE_URL = config("BASE_URL", default=None)
 
 ALLOWED_HOSTS = [
  ".railway.app" # https://saas.prod.railway.app
@@ -33,10 +31,7 @@ if DEBUG:
         "127.0.0.1",
         "localhost"
     ]
-
-
-# Application definition
-
+    
 INSTALLED_APPS = [
     #django-apps
     'django.contrib.admin',
@@ -78,7 +73,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'cfehome.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
