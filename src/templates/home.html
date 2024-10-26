@@ -1,16 +1,9 @@
 {% extends "base.html" %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>{{ page_title }}</title>
-</head>
-<body>
- <h1>Welcome to {{ page_title }}</h1>
- <p>Total Visits: {{ total_visit_count }}</p>
- <p>Page Visits: {{ page_visit_count }}</p>
- <p>Percentage: {{ percent }}%</p>
-</body>
-</html>
 
+{% block head_title %}{{page_title}} - {{block.super}} {% endblock head_title %}
+
+{% block content %}
+
+ <h1>{{ page_title }}</h1>
+
+{% endblock %}
